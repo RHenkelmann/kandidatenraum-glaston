@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Room | Ralf Henkelmann | Sales Manager DACH – Glaston</title>
+<style>
+  :root {
+    --graphite:    #17313B;
+    --teal:        #2E8C8A;
+    --teal-light:  #3aada9;
+    --teal-subtle: #e8f4f4;
+    --teal-border: #b8e0df;
+    --off-white:   #f5f7f7;
+    --white:       #ffffff;
+    --gray-200:    #e8edee;
+    --gray-400:    #8fa8af;
+    --text-main:   #17313B;
+    --text-soft:   #4a6872;
+    --text-muted:  #8fa8af;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--off-white);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  .site-header { background: var(--graphite); position: relative; overflow: hidden; }
+  .site-header::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 420px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(46,140,138,0.08) 100%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1080px; margin: 0 auto; padding: 48px 40px 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end;
+  }
+  .header-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .header-eyebrow::before {
+    content: ''; display: block; width: 28px; height: 1.5px; background: var(--teal);
+  }
+  .header-name {
+    font-size: 38px; font-weight: 300; color: var(--white);
+    letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 10px;
+  }
+  .header-role { font-size: 13px; color: var(--teal-light); letter-spacing: 0.04em; }
+  .header-meta { text-align: right; }
+  .header-meta .conf {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gray-400); margin-bottom: 6px;
+  }
+  .header-meta .date { font-size: 12px; color: var(--gray-400); }
+  .header-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 60%, transparent 100%);
+  }
+
+  /* INTRO */
+  .intro-strip { background: var(--white); border-bottom: 1px solid var(--gray-200); }
+  .intro-inner {
+    max-width: 1080px; margin: 0 auto; padding: 28px 40px;
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+  }
+  .intro-text { font-size: 15px; color: var(--text-soft); line-height: 1.7; max-width: 680px; }
+  .intro-text strong { color: var(--graphite); }
+
+  .storyline-inline { display: flex; align-items: center; flex-shrink: 0; }
+  .sl-step {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--graphite); background: var(--teal-subtle);
+    border: 1px solid var(--teal-border); padding: 6px 11px; white-space: nowrap;
+  }
+  .sl-step:first-child { border-radius: 4px 0 0 4px; }
+  .sl-step:last-child  { border-radius: 0 4px 4px 0; }
+  .sl-arrow {
+    font-size: 10px; color: var(--teal); background: var(--teal-subtle);
+    border-top: 1px solid var(--teal-border); border-bottom: 1px solid var(--teal-border);
+    padding: 6px 3px; display: flex; align-items: center;
+  }
+
+  /* MAIN */
+  .main-wrap { max-width: 1080px; margin: 0 auto; padding: 40px 40px 60px; }
+
+  .section-head {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 20px; margin-top: 48px;
+  }
+  .section-head:first-of-type { margin-top: 0; }
+  .section-title { font-size: 17px; font-weight: 600; color: var(--graphite); white-space: nowrap; }
+  .section-line { flex: 1; height: 1px; background: var(--gray-200); }
+
+  /* READING PATHS */
+  .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .path-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-top: 3px solid var(--teal); border-radius: 4px; padding: 22px 20px 20px;
+    transition: box-shadow 0.2s, border-top-color 0.2s;
+  }
+  .path-card:hover { box-shadow: 0 4px 18px rgba(46,140,138,0.12); border-top-color: var(--teal-light); }
+  .path-audience {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 5px;
+  }
+  .path-title { font-size: 15px; font-weight: 600; color: var(--graphite); margin-bottom: 3px; }
+  .path-duration { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+  .path-steps { display: flex; flex-direction: column; gap: 7px; }
+  .path-step { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; color: var(--text-soft); }
+  .path-num {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--teal-subtle); border: 1px solid var(--teal-border);
+    color: var(--teal); font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .path-step a {
+    color: var(--text-soft); border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .path-step a:hover { color: var(--teal); border-bottom-color: var(--teal-border); }
+
+  /* MODULES */
+  .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .module-block {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 4px; overflow: hidden;
+  }
+  .module-header {
+    background: var(--graphite); padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .module-num {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; color: var(--teal);
+    background: rgba(46,140,138,0.15); border: 1px solid rgba(46,140,138,0.3);
+    padding: 3px 8px; border-radius: 2px; text-transform: uppercase; flex-shrink: 0;
+  }
+  .module-name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .module-docs { padding: 4px 0; }
+
+  .doc-row {
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; gap: 12px; padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-200);
+    transition: background 0.15s; cursor: pointer;
+  }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-row:hover { background: var(--teal-subtle); }
+
+  .doc-icon {
+    width: 32px; height: 32px; background: var(--teal-subtle);
+    border: 1px solid var(--teal-border); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .doc-icon svg { width: 14px; height: 14px; fill: var(--teal); }
+
+  .doc-num {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px;
+  }
+  .doc-title { font-size: 13px; font-weight: 600; color: var(--graphite); line-height: 1.3; margin-bottom: 3px; }
+  .doc-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  .doc-link {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); border: 1px solid var(--gray-200); padding: 5px 10px;
+    border-radius: 3px; white-space: nowrap; flex-shrink: 0; align-self: center;
+    transition: all 0.15s;
+  }
+  .doc-row:hover .doc-link { background: var(--teal); color: var(--white); border-color: var(--teal); }
+
+  /* QUICK ACCESS */
+  .qa-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .qa-card {
+    background: var(--white); border: 1px solid var(--gray-200); border-radius: 4px;
+    padding: 18px 16px; display: flex; flex-direction: column; gap: 10px;
+    transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;
+  }
+  .qa-card:hover { box-shadow: 0 4px 16px rgba(23,49,59,0.1); transform: translateY(-2px); }
+  .qa-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal); display: flex; align-items: center; gap: 6px;
+  }
+  .qa-tag::before { content: ''; display: block; width: 16px; height: 1.5px; background: var(--teal); }
+  .qa-title { font-size: 14px; font-weight: 600; color: var(--graphite); line-height: 1.3; }
+  .qa-hint { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+  .qa-open {
+    margin-top: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 5px;
+  }
+  .qa-open::after { content: '→'; }
+
+  /* FOOTER */
+  .site-footer { background: var(--graphite); border-top: 2px solid var(--teal); }
+  .footer-inner {
+    max-width: 1080px; margin: 0 auto; padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-left { font-size: 11px; color: var(--gray-400); letter-spacing: 0.06em; }
+  .footer-left strong { color: var(--teal-light); font-weight: 600; }
+  .footer-right { font-size: 10px; color: var(--gray-400); letter-spacing: 0.06em; text-align: right; }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .header-inner { grid-template-columns: 1fr; padding: 36px 20px 32px; }
+    .header-meta { text-align: left; }
+    .intro-inner { grid-template-columns: 1fr; }
+    .storyline-inline { display: none; }
+    .paths-grid, .modules-grid { grid-template-columns: 1fr; }
+    .qa-grid { grid-template-columns: 1fr 1fr; }
+    .main-wrap { padding: 32px 20px 48px; }
+    .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+  }
+  @media (max-width: 500px) {
+    .qa-grid { grid-template-columns: 1fr; }
+    .header-name { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Candidate Room</div>
+      <h1 class="header-name">Ralf Henkelmann</h1>
+      <p class="header-role">Sales Manager DACH &nbsp;·&nbsp; Glaston Corporation &nbsp;·&nbsp; Bewerbungsunterlagen April 2026</p>
+    </div>
+    <div class="header-meta">
+      <div class="conf">Vertraulich</div>
+      <div class="date">Stand April 2026</div>
+    </div>
+  </div>
+</header>
+<div class="header-bar"></div>
+
+<!-- INTRO -->
+<section class="intro-strip">
+  <div class="intro-inner">
+    <p class="intro-text">
+      Ein strukturierter Candidate Room zur schnellen Einordnung von
+      <strong>Profil, Marktverständnis, Passung und Umsetzungslogik</strong>
+      für die Rolle Sales Manager DACH. Die Unterlagen folgen einer klaren Entscheidungslogik –
+      je nach Perspektive in 3, 10 oder 15 Minuten lesbar.
+    </p>
+    <div class="storyline-inline">
+      <div class="sl-step">Entry</div><div class="sl-arrow">›</div>
+      <div class="sl-step">Business Case</div><div class="sl-arrow">›</div>
+      <div class="sl-step">Candidate Fit</div><div class="sl-arrow">›</div>
+      <div class="sl-step">Decision Logic</div><div class="sl-arrow">›</div>
+      <div class="sl-step">Execution</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main-wrap">
+
+  <!-- READING PATHS -->
+  <div class="section-head">
+    <h2 class="section-title">Empfohlene Lesepfade</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="paths-grid">
+
+    <div class="path-card">
+      <div class="path-audience">Schnelle Erstprüfung</div>
+      <div class="path-title">Grundsätzliche Passung</div>
+      <div class="path-duration">ca. 3 Minuten</div>
+      <div class="path-steps">
+        <div class="path-step"><span class="path-num">1</span>
+          <a href="https://www.dropbox.com/scl/fi/qyoq8ps2pexnqkco2g0qw/01_Executive_Snapshot_Ralf_Henkelmann.pdf?rlkey=43ntvfwomea59c4n1z0z5r8ko&st=8wf12l2s&dl=0" target="_blank">Executive Snapshot</a></div>
+        <div class="path-step"><span class="path-num">2</span>
+          <a href="https://www.dropbox.com/scl/fi/tkmqr4v24ni5si0fxk99r/30_Kandidatenanalyse_Glaston.pdf?rlkey=o36t5rigb0qut5g8owu30uz5a&st=a4fdd9nj&dl=0" target="_blank">Kandidatenanalyse (Fazit)</a></div>
+        <div class="path-step"><span class="path-num">3</span>
+          <a href="https://www.dropbox.com/scl/fi/sxn4or8iteb2b1ddtytd5/20_Lebenslauf_Ralf_Henkelmann_Glaston.pdf?rlkey=s9sib7l4bzpksh60ollnjbqi9&st=746l63ly&dl=0" target="_blank">Lebenslauf</a></div>
+      </div>
+    </div>
+
+    <div class="path-card">
+      <div class="path-audience">Hiring Manager · Vertriebsleitung</div>
+      <div class="path-title">Vollständige Bewertung</div>
+      <div class="path-duration">ca. 10 Minuten</div>
+      <div class="path-steps">
+        <div class="path-step"><span class="path-num">1</span>
+          <a href="https://www.dropbox.com/scl/fi/5771i4pvxt08v8j68eqyq/10_Glaston_Unternehmensanalyse_GJ2025.pdf?rlkey=d01qfhjwtjh2sm7h7sn1a6pvb&st=1z8n4w5l&dl=0" target="_blank">Unternehmensanalyse</a></div>
+        <div class="path-step"><span class="path-num">2</span>
+          <a href="https://www.dropbox.com/scl/fi/w5hr74cdvmyfeykmmlnze/11_Glaston_Kunden_Wettbewerber_Benchmark.pdf?rlkey=vew030misfuikxmvfdj1828fz&st=vu32b7u8&dl=0" target="_blank">Kunden / Wettbewerber / Benchmark</a></div>
+        <div class="path-step"><span class="path-num">3</span>
+          <a href="https://www.dropbox.com/scl/fi/9fsmcav0muytlix0wz5sm/21_Motivation_Mehrwert_Ralf_Henkelmann_Glaston.pdf?rlkey=4bnfb4xm8piyiub31n1vv0r58&st=7sec8i0q&dl=0" target="_blank">Motivation & Mehrwert</a></div>
+        <div class="path-step"><span class="path-num">4</span>
+          <a href="https://www.dropbox.com/scl/fi/sxn4or8iteb2b1ddtytd5/20_Lebenslauf_Ralf_Henkelmann_Glaston.pdf?rlkey=s9sib7l4bzpksh60ollnjbqi9&st=746l63ly&dl=0" target="_blank">Lebenslauf</a></div>
+        <div class="path-step"><span class="path-num">5</span>
+          <a href="https://www.dropbox.com/scl/fi/b2y3vrhs2f3wmfqte47cv/31_Erste_90_Tage_Umsetzungsplan_DACH.pdf?rlkey=6ne8pymkgfy5i86q1kos8ci3n&st=v5yapixd&dl=0" target="_blank">Erste 90 Tage</a></div>
+      </div>
+    </div>
+
+    <div class="path-card">
+      <div class="path-audience">Geschäftsführung · Entscheider</div>
+      <div class="path-title">Einstellungslogik</div>
+      <div class="path-duration">ca. 15 Minuten</div>
+      <div class="path-steps">
+        <div class="path-step"><span class="path-num">1</span>
+          <a href="https://www.dropbox.com/scl/fi/qyoq8ps2pexnqkco2g0qw/01_Executive_Snapshot_Ralf_Henkelmann.pdf?rlkey=43ntvfwomea59c4n1z0z5r8ko&st=8wf12l2s&dl=0" target="_blank">Executive Snapshot</a></div>
+        <div class="path-step"><span class="path-num">2</span>
+          <a href="https://www.dropbox.com/scl/fi/5771i4pvxt08v8j68eqyq/10_Glaston_Unternehmensanalyse_GJ2025.pdf?rlkey=d01qfhjwtjh2sm7h7sn1a6pvb&st=1z8n4w5l&dl=0" target="_blank">Unternehmensanalyse</a></div>
+        <div class="path-step"><span class="path-num">3</span>
+          <a href="https://www.dropbox.com/scl/fi/tkmqr4v24ni5si0fxk99r/30_Kandidatenanalyse_Glaston.pdf?rlkey=o36t5rigb0qut5g8owu30uz5a&st=a4fdd9nj&dl=0" target="_blank">Kandidatenanalyse</a></div>
+        <div class="path-step"><span class="path-num">4</span>
+          <a href="https://www.dropbox.com/scl/fi/b2y3vrhs2f3wmfqte47cv/31_Erste_90_Tage_Umsetzungsplan_DACH.pdf?rlkey=6ne8pymkgfy5i86q1kos8ci3n&st=v5yapixd&dl=0" target="_blank">Erste 90 Tage</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DOCUMENT MODULES -->
+  <div class="section-head">
+    <h2 class="section-title">Dokumentstruktur nach Modulen</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="modules-grid">
+
+    <div class="module-block">
+      <div class="module-header">
+        <span class="module-num">01</span>
+        <span class="module-name">Entry</span>
+      </div>
+      <div class="module-docs">
+        <a href="https://www.dropbox.com/scl/fi/qyoq8ps2pexnqkco2g0qw/01_Executive_Snapshot_Ralf_Henkelmann.pdf?rlkey=43ntvfwomea59c4n1z0z5r8ko&st=8wf12l2s&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 01</div>
+            <div class="doc-title">Executive Snapshot</div>
+            <div class="doc-desc">60-Sekunden-Qualifizierung zur grundsätzlichen Passung</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+        <a href="https://www.dropbox.com/scl/fi/flrfo68znpfwkhb75s7ox/00_E-Mail_Contacts_HBenneck_Why_Glaston.pdf?rlkey=i43yvckn37bnnff2xtol7nzq2&st=2us4eggy&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 00</div>
+            <div class="doc-title">Anschreiben an H. G. Benneck</div>
+            <div class="doc-desc">Kontext, operative Perspektive und Zugang zum Candidate Room</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="module-block">
+      <div class="module-header">
+        <span class="module-num">02</span>
+        <span class="module-name">Business Case</span>
+      </div>
+      <div class="module-docs">
+        <a href="https://www.dropbox.com/scl/fi/5771i4pvxt08v8j68eqyq/10_Glaston_Unternehmensanalyse_GJ2025.pdf?rlkey=d01qfhjwtjh2sm7h7sn1a6pvb&st=1z8n4w5l&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 10</div>
+            <div class="doc-title">Glaston Unternehmensanalyse GJ 2025</div>
+            <div class="doc-desc">Unternehmenslage, Guidance 2026 und vertriebliche Implikationen für DACH</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+        <a href="https://www.dropbox.com/scl/fi/w5hr74cdvmyfeykmmlnze/11_Glaston_Kunden_Wettbewerber_Benchmark.pdf?rlkey=vew030misfuikxmvfdj1828fz&st=vu32b7u8&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 11</div>
+            <div class="doc-title">Kunden / Wettbewerber / Benchmark</div>
+            <div class="doc-desc">DACH-Kundenbasis, Wettbewerbsstruktur und konkrete Vertriebshebel</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="module-block">
+      <div class="module-header">
+        <span class="module-num">03</span>
+        <span class="module-name">Candidate Fit</span>
+      </div>
+      <div class="module-docs">
+        <a href="https://www.dropbox.com/scl/fi/sxn4or8iteb2b1ddtytd5/20_Lebenslauf_Ralf_Henkelmann_Glaston.pdf?rlkey=s9sib7l4bzpksh60ollnjbqi9&st=746l63ly&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 20</div>
+            <div class="doc-title">Lebenslauf</div>
+            <div class="doc-desc">Track Record, Branchennähe und Gebietsverantwortung DACH</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+        <a href="https://www.dropbox.com/scl/fi/9fsmcav0muytlix0wz5sm/21_Motivation_Mehrwert_Ralf_Henkelmann_Glaston.pdf?rlkey=4bnfb4xm8piyiub31n1vv0r58&st=7sec8i0q&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 21</div>
+            <div class="doc-title">Motivation & Mehrwert</div>
+            <div class="doc-desc">Warum dieses Profil operativ zur aktuellen Glaston-Ausgangslage passt</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="module-block">
+      <div class="module-header">
+        <span class="module-num">04</span>
+        <span class="module-name">Decision Logic &amp; Execution</span>
+      </div>
+      <div class="module-docs">
+        <a href="https://www.dropbox.com/scl/fi/tkmqr4v24ni5si0fxk99r/30_Kandidatenanalyse_Glaston.pdf?rlkey=o36t5rigb0qut5g8owu30uz5a&st=a4fdd9nj&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 30</div>
+            <div class="doc-title">Kandidatenanalyse</div>
+            <div class="doc-desc">Gesamtpassung, adressierbare Risiken und Einstellungslogik aus Entscheidersicht</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+        <a href="https://www.dropbox.com/scl/fi/b2y3vrhs2f3wmfqte47cv/31_Erste_90_Tage_Umsetzungsplan_DACH.pdf?rlkey=6ne8pymkgfy5i86q1kos8ci3n&st=v5yapixd&dl=0" target="_blank" class="doc-row">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg></div>
+          <div class="doc-info">
+            <div class="doc-num">Dok. 31</div>
+            <div class="doc-title">Erste 90 Tage – Umsetzungsplan DACH</div>
+            <div class="doc-desc">Onboarding, Reaktivierung, Service-first-Logik und Pipeline-Aufbau</div>
+          </div>
+          <div class="doc-link">Öffnen</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div class="section-head">
+    <h2 class="section-title">Quick Access</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="qa-grid">
+
+    <a href="https://www.dropbox.com/scl/fi/qyoq8ps2pexnqkco2g0qw/01_Executive_Snapshot_Ralf_Henkelmann.pdf?rlkey=43ntvfwomea59c4n1z0z5r8ko&st=8wf12l2s&dl=0" target="_blank" class="qa-card">
+      <div class="qa-tag">Entry</div>
+      <div class="qa-title">Executive Snapshot</div>
+      <div class="qa-hint">Kurzprofil, KPIs und Passung auf einer Seite</div>
+      <div class="qa-open">Öffnen</div>
+    </a>
+
+    <a href="https://www.dropbox.com/scl/fi/5771i4pvxt08v8j68eqyq/10_Glaston_Unternehmensanalyse_GJ2025.pdf?rlkey=d01qfhjwtjh2sm7h7sn1a6pvb&st=1z8n4w5l&dl=0" target="_blank" class="qa-card">
+      <div class="qa-tag">Business Case</div>
+      <div class="qa-title">Unternehmensanalyse 2025</div>
+      <div class="qa-hint">Marktlage, Guidance 2026 und vertriebliche Konsequenzen</div>
+      <div class="qa-open">Öffnen</div>
+    </a>
+
+    <a href="https://www.dropbox.com/scl/fi/tkmqr4v24ni5si0fxk99r/30_Kandidatenanalyse_Glaston.pdf?rlkey=o36t5rigb0qut5g8owu30uz5a&st=a4fdd9nj&dl=0" target="_blank" class="qa-card">
+      <div class="qa-tag">Decision Logic</div>
+      <div class="qa-title">Kandidatenanalyse</div>
+      <div class="qa-hint">Passungsanalyse, SWOT und Einstellungslogik</div>
+      <div class="qa-open">Öffnen</div>
+    </a>
+
+    <a href="https://www.dropbox.com/scl/fi/b2y3vrhs2f3wmfqte47cv/31_Erste_90_Tage_Umsetzungsplan_DACH.pdf?rlkey=6ne8pymkgfy5i86q1kos8ci3n&st=v5yapixd&dl=0" target="_blank" class="qa-card">
+      <div class="qa-tag">Execution</div>
+      <div class="qa-title">Erste 90 Tage</div>
+      <div class="qa-hint">Operativer Einstiegsplan für DACH – konkret und realistisch</div>
+      <div class="qa-open">Öffnen</div>
+    </a>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <strong>Vertraulich</strong> &nbsp;·&nbsp; Candidate Room Glaston &nbsp;·&nbsp; Ralf Henkelmann &nbsp;·&nbsp; Stand April 2026
+    </div>
+    <div class="footer-right">
+      Adressiert an: H. Gerhard Benneck<br>
+      CONTACTS &amp; MANAGEMENT GmbH / Glaston Corporation
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
